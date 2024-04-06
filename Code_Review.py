@@ -66,9 +66,12 @@ def retrieve_posts(username):
         print('User not found.')
         return
     # Filter posts based on visibility and friendship, and print accessible posts
-    accessible_posts = [post['post_id'] for post in posts if post['user_id'] != username and (post['visibility'] == 'public' or post['user_id'] in user['friends'])]
+    accessible_posts = [post['post_id'] for post in posts if (post['visibility'] == 'public' or post['user_id'] in user['friends'] or post['user_id'] == username)]
     print('Accessible posts:')
     print('\n'.join(accessible_posts))
+
+
+
 
 # Function to search users by location
 def search_users_by_location(state):
